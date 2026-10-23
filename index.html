@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marin's To-Do ★</title>
+
+    <!-- Google Fonts: League Spartan (headers), Montserrat (sub-headers), Quicksand (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Montserrat:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white min-h-screen overflow-x-hidden font-body text-zinc-800 relative">
+
+    <!-- ═══════════════════════════════════════════════════
+         CHARACTER COLLAGE — zine-style scattered placement
+         Each image gets its own clear vertical zone on the right.
+         Left-side accents are kept small so they never cover content.
+         ═══════════════════════════════════════════════════ -->
+
+    <!-- ★ MARIN BG — main hero, upper-right -->
+    <img
+      src="/marin-bg.png"
+      alt=""
+      class="char-img fixed top-[3%] right-[0%] w-[36vw] max-w-[460px] z-0"
+    />
+
+    <!-- ★ CHAR 3 — small sticker, top area, left of marin-bg -->
+    <img
+      src="/char-3.png"
+      alt=""
+      class="char-img fixed top-[4%] right-[34vw] w-[8vw] max-w-[100px] z-20 opacity-75"
+      style="transform: rotate(6deg);"
+    />
+
+    <!-- ★ CHAR 2 — mid-right, peeking from behind, faded for depth -->
+    <img
+      src="/char-2.png"
+      alt=""
+      class="char-img fixed top-[50%] right-[2%] w-[18vw] max-w-[230px] z-5 opacity-50"
+      style="transform: translateY(-50%) rotate(-2deg);"
+    />
+
+    <!-- ★ CHAR 4 — right-side, lower-mid area -->
+    <img
+      src="/char-4.png"
+      alt=""
+      class="char-img fixed bottom-[28%] right-[18vw] w-[14vw] max-w-[180px] z-30 opacity-85"
+      style="transform: rotate(-4deg);"
+    />
+
+    <!-- ★ MARIN FG — bottom-right corner, foreground -->
+    <img
+      src="/marin-fg.png"
+      alt=""
+      class="char-img fixed bottom-[0%] right-[0%] w-[24vw] max-w-[300px] z-50"
+    />
+
+    <!-- ★ CHAR 1 — small chibi sticker, bottom-left (below content) -->
+    <img
+      src="/char-1.png"
+      alt=""
+      class="char-img fixed bottom-[2%] left-[1%] w-[10vw] max-w-[130px] z-40"
+      style="transform: rotate(-5deg);"
+    />
+
+    <!-- ★ CHAR 5 — tiny subtle accent, left margin mid-page -->
+    <img
+      src="/char-5.png"
+      alt=""
+      class="char-img fixed top-[60%] left-[0%] w-[8vw] max-w-[100px] z-0 opacity-40"
+      style="transform: rotate(8deg);"
+    />
+
+    <!-- ═══════════════════════════════════════════════════
+         MAIN CONTENT — left-aligned to balance characters
+         ═══════════════════════════════════════════════════ -->
+    <div id="app" class="relative z-10 max-w-2xl pl-8 md:pl-16 pr-4 py-10 md:py-16">
+
+      <!-- HERO HEADER — zine-style stacked type -->
+      <header class="mb-10">
+        <p class="font-body text-sm tracking-widest text-pink-400 uppercase mb-1">( a cute little )</p>
+        <h1 class="font-header text-[clamp(3rem,8vw,6rem)] leading-[0.88] tracking-[-0.04em] text-black">
+          to-do<br/>
+          <span class="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 bg-clip-text text-transparent">list!</span>
+        </h1>
+        <p class="font-sub text-base md:text-lg mt-3 text-zinc-500 tracking-tight max-w-md">
+          stay on top of your stuff ★ schedule it, check it off, feel good about it.
+        </p>
+      </header>
+
+      <!-- ADD TASK SECTION -->
+      <section class="mb-8">
+        <div class="flex flex-col gap-3 max-w-lg">
+          <!-- Task text input -->
+          <input
+            id="task-input"
+            type="text"
+            placeholder="what needs doing? ✦"
+            class="w-full px-5 py-3 rounded-2xl border-2 border-pink-200 bg-white
+                   font-body text-base text-zinc-700 placeholder:text-pink-300
+                   focus:outline-none focus:border-fuchsia-400 focus:ring-4 focus:ring-fuchsia-100
+                   transition-all duration-200"
+          />
+
+          <!-- Date/time row -->
+          <div class="flex gap-2 flex-wrap">
+            <input
+              id="task-date"
+              type="date"
+              class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border-2 border-violet-200 bg-white
+                     font-body text-sm text-zinc-600
+                     focus:outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100
+                     transition-all duration-200"
+            />
+            <input
+              id="task-time"
+              type="time"
+              class="flex-1 min-w-[120px] px-4 py-2.5 rounded-xl border-2 border-violet-200 bg-white
+                     font-body text-sm text-zinc-600
+                     focus:outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100
+                     transition-all duration-200"
+            />
+          </div>
+
+          <!-- Priority selector + Add button -->
+          <div class="flex gap-2 items-center">
+            <select
+              id="task-priority"
+              class="px-4 py-2.5 rounded-xl border-2 border-pink-200 bg-white
+                     font-body text-sm text-zinc-600
+                     focus:outline-none focus:border-pink-400 focus:ring-4 focus:ring-pink-100
+                     transition-all duration-200 cursor-pointer"
+            >
+              <option value="normal">✿ normal</option>
+              <option value="important">★ important</option>
+              <option value="urgent">⚡ urgent</option>
+            </select>
+
+            <button
+              id="add-btn"
+              class="ml-auto px-6 py-2.5 rounded-2xl font-sub font-bold text-sm text-white
+                     bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500
+                     hover:scale-105 hover:shadow-lg hover:shadow-pink-200
+                     active:scale-95 transition-all duration-200 cursor-pointer
+                     whitespace-nowrap"
+            >
+              + add task!
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILTER TABS -->
+      <nav class="flex gap-2 mb-6 flex-wrap" id="filter-tabs">
+        <button data-filter="all" class="filter-tab active font-sub text-xs font-bold px-4 py-1.5 rounded-full transition-all duration-200">all</button>
+        <button data-filter="active" class="filter-tab font-sub text-xs font-bold px-4 py-1.5 rounded-full transition-all duration-200">active</button>
+        <button data-filter="done" class="filter-tab font-sub text-xs font-bold px-4 py-1.5 rounded-full transition-all duration-200">done ✓</button>
+      </nav>
+
+      <!-- TASK LIST CONTAINER -->
+      <section id="task-list" class="flex flex-col gap-3 max-w-lg mb-16">
+        <!-- Tasks rendered by JS -->
+      </section>
+
+      <!-- EMPTY STATE -->
+      <div id="empty-state" class="hidden max-w-lg">
+        <p class="font-header text-2xl text-pink-300 leading-tight mb-1">nothing here yet~</p>
+        <p class="font-body text-sm text-zinc-400">add a task above to get started! ♡</p>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="mt-20 mb-8">
+        <div class="w-24 h-[3px] bg-gradient-to-r from-pink-400 to-violet-400 rounded-full mb-4"></div>
+        <p class="font-body text-xs text-zinc-400 tracking-wide">
+          built with ♡ — vite + tailwind + vanilla js
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
